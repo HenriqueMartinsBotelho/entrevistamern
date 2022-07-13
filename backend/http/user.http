@@ -1,0 +1,33 @@
+GET http://localhost:3001/users HTTP/1.1
+
+
+###
+
+POST http://localhost:3001/user HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Henrique",
+    "email": "henrique6@gmail.com",
+    "mobile": "12345",
+    "phone": "45678",
+    "password": "123456"
+}
+
+### 
+
+PATCH http://localhost:3001/update HTTP/1.1
+content-type: application/json
+
+{
+    "name": "henrique update",
+    "email": "henrique6@gmail.com",
+    "mobile": "12345",
+    "phone": "45678",
+    "password": "123456"
+}
+
+###
+
+DELETE http://localhost:3001/delete/?email=henrique@gmail.com HTTP/1.1
+content-type: application/json
