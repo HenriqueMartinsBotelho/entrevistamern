@@ -1,4 +1,4 @@
- import mongoose from "mongoose";
+import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
  const User = new mongoose.Schema({
@@ -25,7 +25,7 @@ import bcrypt from "bcrypt";
     password: {
         type: String,
         required: true,
-        select: false
+        // select: false
     },
     createdAt:{
         type: Date,

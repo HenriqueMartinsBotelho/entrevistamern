@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import User from "../schemas/User";
+import jwt from "jsonwebtoken";
+
 
 class UserController {
   async getAll(request: Request, response: Response) {
@@ -65,10 +67,34 @@ class UserController {
   }
 
   async delete(request: Request, response: Response) {
-    const {  email } = request.query;
+    const { email } = request.query;
     try {
       await User.deleteOne({ email });
-      return response.json({status: "Deleted!"});
+      return response.json({ status: "Deleted!" });
+    } catch (error) {
+      return response.status(500).send({
+        error: "Registration failed",
+        message: error,
+      });
+    }
+  }
+
+  async login(request: Request, response: Response) {
+    const { email, password } = request.body;
+    try {
+      const userExists = await User.findOne({ email, password });
+      if (!userExists)
+        return response.status(401).json({ message: "User not found!" });
+      const { _id } = userExists;
+      const newToken = jwt.sign(
+        {
+          userId: _id,
+          email,
+        },
+        "123456",
+      );
+
+      return response.status(200).json({ token: newToken})
     } catch (error) {
       return response.status(500).send({
         error: "Registration failed",

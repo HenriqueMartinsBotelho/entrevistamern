@@ -1,16 +1,17 @@
-GET http://localhost:3001/users HTTP/1.1
+GET http://localhost:3001/getall HTTP/1.1
 
 
 ###
 
-POST http://localhost:3001/user HTTP/1.1
+POST http://localhost:3001/create HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmNjYjk2OWMxZDI5NzVlNDg5MzA0MzIiLCJlbWFpbCI6ImhlbnJpcXVlNUBnbWFpbC5jb20iLCJpYXQiOjE2NTc3Mzk1NjN9.HrgQ51Y7sEV7KL1sfz4apvggqlCvx02O5GJBOOZ5hmM
 
 {
-    "name": "Henrique",
-    "email": "henrique6@gmail.com",
-    "mobile": "12345",
-    "phone": "45678",
+    "name": "Oi",
+    "email": "henriquem@gmail.com",
+    "mobile": "eee",
+    "phone": "fff",
     "password": "123456"
 }
 
@@ -31,3 +32,13 @@ content-type: application/json
 
 DELETE http://localhost:3001/delete/?email=henrique@gmail.com HTTP/1.1
 content-type: application/json
+
+###
+
+GET http://localhost:3001/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "henrique5@gmail.com",
+    "password": "123456"
+}
